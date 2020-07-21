@@ -1,0 +1,24 @@
+/* NewCampsites */
+body {
+  background: black;
+}
+.newcamp h2 {
+  text-align: center;
+  padding-top: 20%;
+}
+.newcamp form {
+  margin: 0 auto;
+  width: 50%;
+}
+.newcamp a {
+  display: block;
+  text-align: center;
+}
+/* campgrounds */
+.campgrounds h1 {
+  text-align: center;
+  width: 100%;
+}
+.jumbotron {
+  text-align: center;
+}

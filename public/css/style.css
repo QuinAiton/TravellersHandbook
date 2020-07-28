@@ -1,7 +1,4 @@
-/* NewCampsites */
-body {
-  background: black;
-}
+/* NEW CAMPGROUNDS FORM */
 .newcamp h2 {
   text-align: center;
   padding-top: 20%;
@@ -14,11 +11,23 @@ body {
   display: block;
   text-align: center;
 }
-/* campgrounds */
+/* Campgrounds Page */
 .campgrounds h1 {
   text-align: center;
   width: 100%;
 }
 .jumbotron {
   text-align: center;
+}
+
+/* LOGIN FORM */ /*SIGN UP*/
+.auth-header {
+  text-align: center;
+}
+.auth .form-group {
+  width: 35%;
+  margin: 10px auto;
+}
+.auth-body {
+  padding-top: 20vh;
 }

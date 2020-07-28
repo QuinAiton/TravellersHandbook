@@ -8,7 +8,7 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Travellers HandBook</title>
   </head>
   <body>
@@ -46,10 +46,15 @@
           </li>
           <% }%>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <form
+          class="form-inline my-2 my-lg-0"
+          action="/campgrounds"
+          method="GET"
+        >
           <input
             class="form-control mr-sm-2"
-            type="search"
+            name="search"
+            type="text"
             placeholder="Search"
             aria-label="Search"
           />
@@ -59,3 +64,12 @@
         </form>
       </div>
     </nav>
+
+    <div class="container">
+      <% if(error && error.length>0){%>
+      <div class="alert alert-danger" role="alert"><%= error %></div>
+      <%}%> <% if(success && success.length>0){%>
+      <div class="alert alert-success" role="alert"><%= success %></div>
+      <%}%>
+    </div>
+    <div class="container">

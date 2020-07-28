@@ -1,10 +1,54 @@
 <%- include ("./partials/header") %>
+<div class="container">
+  <div class="auth-body">
+    <h1 class="auth-header">Sign Up</h1>
+    <form class="auth" action="/register" method="post">
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="First Name"
+            name="firstName"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Last Name"
+            name="lastName"
+            required
+          />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col-md-6 mb-3">
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Username"
+            name="username"
+            required
+          />
+        </div>
+        <div class="col-md-6 mb-3">
+          <input
+            type="password"
+            class="form-control"
+            placeholder="password"
+            name="password"
+            required
+          />
+        </div>
+      </div>
+      <button class="float-right btn btn-primary" type="submit">
+        Create Account
+      </button>
+    </form>
+  </div>
+</div>
+<a href="/campgrounds">Go Back</a>
 
-<h1>Sign Up!</h1>
-
-<form action="/register" method="POST">
-  <input type="text" name="username" placeholder="Username" />
-  <input type="password" name="password" placeholder="Password" />
-  <button type="submit">Create Account</button>
-</form>
 <%- include ("./partials/footer") %>

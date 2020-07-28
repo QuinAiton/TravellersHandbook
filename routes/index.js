@@ -1,10 +1,14 @@
 const express = require("express"),
   passport = require("passport"),
-  User = require("../models/user");
-router = express.Router();
+  User = require("../models/user"),
+  router = express.Router();
+
 //========================
 //Authentifaction route
 //========================
+router.get("/", (req, res) => {
+  res.render("landing");
+});
 
 //register routes
 router.get("/register", (req, res) => {
@@ -12,15 +16,23 @@ router.get("/register", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
-  user.register(
-    new User({ username: req.body.username }),
+  User.register(
+    new User({
+      username: req.body.username,
+      fistName: req.body.firstName,
+      lastName: req.body.lastName,
+    }),
     req.body.password,
     (err, user) => {
       if (err) {
-        console.log(err);
-        return res.render("register");
+        req.flash("error", err.message);
+        return res.redirect("/register");
       }
       passport.authenticate("local")(req, res, () => {
+        req.flash(
+          "success",
+          "Welcome to the Travellers Handbook " + user.username
+        );
         res.redirect("/campgrounds");
       });
     }
@@ -42,15 +54,12 @@ router.post(
 );
 
 router.get("/logout", (req, res) => {
+  req.flash(
+    "success",
+    "Goodbye " + req.user.username + " you have been successfully logged out"
+  );
   req.logOut();
   res.redirect("/campgrounds");
 });
-
-function isLoggedIn(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  }
-  res.redirect("/login");
-}
 
 module.exports = router;

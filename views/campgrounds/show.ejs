@@ -1,15 +1,16 @@
 <!-- shows information about selected campsite -->
 <%- include ("../partials/header")%>
-
-<div class="container">
+<div class="conainer">
   <div class="row">
     <div class="col-md-3">
-      <p class="lead">Travellers Handbook</p>
+      <br />
       <div class="list-group">
         <li class="list-group-item active">info 1</li>
         <li class="list-group-item">info 2</li>
         <li class="list-group-item">info 3</li>
       </div>
+      <div id="map" style="height: 400px; width: 100%;"></div>
+      <br />
     </div>
     <div class="col-md-9">
       <div class="thumbnail">
@@ -21,8 +22,10 @@
           alt=""
         />
         <div class="caption-full">
-          <h5 class="pull-right">$10.00/night</h5>
-          <h4><a href=""><%= campground.name %></a></h4>
+          <em><p class="float-right"><%= campground.price %>$/night</p></em>
+          <strong
+            ><h3><a><%= campground.name %></a></h3></strong
+          >
           <p><%= campground.description %></p>
           <p>Submitted by <%= campground.author.username %></p>
         </div>
@@ -42,15 +45,13 @@
       <% } %>
       <hr />
       <div class="well">
-        <div id="comments" class="container">
+        <div id="comments">
           <div class="row">
             <div class="col">
               <% campground.comments.forEach(comment=> { %>
               <strong><%= comment.author.username%></strong>
             </div>
-            <div class="col d-flex justify-content-end">
-              <span>10 days ago</span>
-            </div>
+            <span class="float-right">10 days ago</span>
           </div>
           <p><%= comment.text%></p>
           <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
@@ -81,6 +82,38 @@
       </div>
     </div>
   </div>
+  <script>
+    function initMap() {
+      const lat = <%= campground.lat %>;
+      const lng = <%= campground.lng %> ;
+      const center = { lat: lat, lng: lng };
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 8,
+        center: center,
+        scrollwheel: false,
+      });
+      const contentString = `
+        <strong><%= campground.name %><br />
+        <%= campground.location %></strong>
+        <p><%= campground.description %></p>
+      `;
+      const infowindow = new google.maps.InfoWindow({
+        content: contentString,
+      });
+      const marker = new google.maps.Marker({
+        position: center,
+        map: map,
+      });
+      marker.addListener("click", () => {
+        infowindow.open(map, marker);
+      });
+    }
+  </script>
+  <script
+    async
+    defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeI6FVN3SKBR3hc4q9XENMJ-rg8VtIqis&callback=initMap"
+  ></script>
 
   <%- include ("../partials/footer")%>
 </div>

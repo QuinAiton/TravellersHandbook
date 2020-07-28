@@ -1,27 +1,25 @@
 <%- include ("../partials/header") %>
 <div class="background">
-  <div class="container new-camp">
-    <h2>Leave A review for <%= campground.name %></h2>
-    <div class="container">
-      <form action="/campgrounds/<%= campground._id %>/comments " method="POST">
-        <div class="form-group">
-          <textarea
-            name="comment[text]"
-            id="comment"
-            cols="30"
-            rows="10"
-            placeholder="comments"
-            required
-          ></textarea>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary">
-            Add Comment
-          </button>
-        </div>
-      </form>
-      <a href="/campgrounds">Go back!</a>
-    </div>
+  <div class="new-camp">
+    <h2>Leave A review for <%=campground.name%></h2>
+    <form action="/campgrounds/<%=campground._id%>/comments " method="POST">
+      <div class="form-group">
+        <textarea
+          name="comment[text]"
+          id="comment"
+          cols="30"
+          rows="10"
+          placeholder="comments"
+          required
+        ></textarea>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary">
+          Add Comment
+        </button>
+      </div>
+    </form>
+    <a href="/campgrounds">Go back!</a>
   </div>
 </div>
 

@@ -26,10 +26,23 @@ const CommentRoutes = require("./routes/comments"),
   CampgroundRoutes = require("./routes/campgrounds");
 
 //connect to mongoose database
-mongoose.connect("mongodb://localhost:27017/TravellerHandBook", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose
+  .connect(
+    "mongodb+srv://Quinten:" +
+      process.env.password +
+      "@cluster0.usje2.mongodb.net/TravellersHandBook?retryWrites=true&w=majority",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+    }
+  )
+  .then(() => {
+    console.log("Your Database has been connected");
+  })
+  .catch((err) => {
+    console.log("ERROR", err.message);
+  });
 mongoose.set("useFindAndModify", false);
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,6 +69,7 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+//flash message set up
 //calls req.user on every route allowing us to access user information
 app.use((req, res, next) => {
   res.locals.currentUser = req.user;
@@ -68,6 +82,6 @@ app.use("/campgrounds", CampgroundRoutes);
 app.use("/campgrounds/:id/comments", CommentRoutes);
 app.use(indexRoutes);
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
   console.log(" YelpCamp server launching on port 3000!...");
 });

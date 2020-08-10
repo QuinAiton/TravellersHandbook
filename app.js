@@ -28,17 +28,11 @@ const CommentRoutes = require("./routes/comments"),
 //connect to mongoose database
 const url = process.env.DATABASEURL || "mongodb://localhost/TravellerHandBook";
 mongoose
-  .connect(
-    url,
-    // ("mongodb+srv://Quinten:" +
-    //   process.env.password +
-    //   "@cluster0.usje2.mongodb.net/TravellersHandBook?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-    }
-  )
+  .connect(url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+  })
   .then(() => {
     console.log("Your Database has been connected");
   })

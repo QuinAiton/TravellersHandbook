@@ -26,11 +26,13 @@ const CommentRoutes = require("./routes/comments"),
   CampgroundRoutes = require("./routes/campgrounds");
 
 //connect to mongoose database
+const url = process.env.DATABASEURL || "mongodb://localhost/TravellerHandBook";
 mongoose
   .connect(
-    "mongodb+srv://Quinten:" +
-      process.env.password +
-      "@cluster0.usje2.mongodb.net/TravellersHandBook?retryWrites=true&w=majority",
+    url,
+    // ("mongodb+srv://Quinten:" +
+    //   process.env.password +
+    //   "@cluster0.usje2.mongodb.net/TravellersHandBook?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -83,6 +85,6 @@ app.use("/campgrounds/:id/comments", CommentRoutes);
 app.use(indexRoutes);
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => {
+app.listen(port, process.env.IP, () => {
   console.log(" YelpCamp server has Started");
 });

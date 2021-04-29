@@ -1,6 +1,6 @@
 # TravellersHandbook
 
-Family Matterz is a full stack family organizer application built with Node, Express, React and MongoDB. This App was designed for mobile devices and is intended as an easy and convenient way for families to connect and stay organized. All features use websockets in order to be synchronous so families can stay up to date in real time.
+Travellers Handbook is a campsite database that allows users to add, rate and comment on campsites. The Yelp of Campsites!
 
 ## Final Product
 

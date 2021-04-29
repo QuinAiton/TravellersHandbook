@@ -2,7 +2,7 @@
 <div class="container">
   <header class="jumbotron">
     <div class="container">
-      <h1>Welcome to the Campers Handbook!</h1>
+      <h1>Welcome to the Travellers Handbook!</h1>
       <p>Your one stop shop to find a secret spot</p>
       <br />
       <button type="button" class="btn btn-light btn-lg">
@@ -12,9 +12,7 @@
   </header>
 
   <div class="row campgrounds">
-    <h1 class="font-weight-light mt-4 mb-0">
-      Our Most Popular Campsites
-    </h1>
+    <h1 class="font-weight-light mt-4 mb-0">Our Most Popular Campsites</h1>
     <hr class="mt-2 mb-5" />
     <div class="row text-center text-lg-center">
       <% campgrounds.forEach(campground => { %>
@@ -25,9 +23,7 @@
           class="img-fluid img-thumbnail"
         />
         <div class="figure-caption">
-          <h4>
-            <%= campground.name %>
-          </h4>
+          <h4><%= campground.name %></h4>
         </div>
         <p>
           <a href="/campgrounds/<%= campground._id %> " class="btn btn-primary"

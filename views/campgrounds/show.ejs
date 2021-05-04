@@ -9,7 +9,7 @@
         <li class="list-group-item">info 2</li>
         <li class="list-group-item">info 3</li>
       </div>
-      <div id="map" style="height: 400px; width: 100%;"></div>
+      <div id="map" style="height: 400px; width: 100%"></div>
       <br />
     </div>
     <div class="col-md-9">
@@ -112,7 +112,7 @@
   <script
     async
     defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCeI6FVN3SKBR3hc4q9XENMJ-rg8VtIqis&callback=initMap"
+    src="https://maps.googleapis.com/maps/api/js?key=<%=process.env.MAPS_KEY%>&callback=initMap"
   ></script>
 
   <%- include ("../partials/footer")%>
